@@ -1,13 +1,16 @@
-SWUpdater = class(function(u, currentVersion)
-    u.currentVersion = currentVersion
-end)    
+local SWUpdater = {};
 
-function SWUpdater:update()
+function SWUpdater:update(currentVersion)
     local getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua"))
     local latestVersion = getNewestVersion()
-    if self.currentVersion == latestVersion then
+    if currentVersion == latestVersion then
         toast ("You are up to date!")
     else
-        toast ("Updated!")
+        httpDownload("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua", localPath .."version.lua")
+        httpDownload("https://raw.githubusercontent.com/digaomatias/SWFriend/master/swfriend.lua", localPath .."swfriend.lua")
+        scriptExit("SWFriend finished updating!")
     end
 end
+
+
+return SWUpdater;

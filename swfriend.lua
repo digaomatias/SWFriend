@@ -5,9 +5,8 @@ toast ("Loading class lib")
 dofile(localPath .. "lib/class.lua")
 toast ("Loading updater")
 -- Script auto-update
-dofile(localPath .. "autoupdater.lua")
+local SWUpdater = require(localPath .. "autoupdater.lua")
 toast ("Executing update")
 currentVersion = dofile(localPath.."version.lua")
-updater = SWUpdater(currentVersion)
-updater:update()
+SWUpdater.update(currentVersion)
 
