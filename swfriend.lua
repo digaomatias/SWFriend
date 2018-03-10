@@ -5,5 +5,6 @@ toast ("Loading updater")
 -- Script auto-update
 dofile(localPath .. "autoupdater.lua")
 toast ("Executing update")
-SWUpdater:update()
+updater = SWUpdater:create()
+updater:update()
 

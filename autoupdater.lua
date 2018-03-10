@@ -1,12 +1,18 @@
 require 'class'
 
-local currentVersion = dofile(localPath.."version.lua")
-local getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua"))
-local latestVersion = getNewestVersion()
+currentVersion = dofile(localPath.."version.lua")
+getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua"))
+latestVersion = getNewestVersion()
 
-SWUpdater = class(function()
-                
-            end)    
+SWUpdater = {}
+SWUpdater.__index = SWUpdater
+
+function SWUpdater:create()
+   local updater = {}             -- our new object
+   setmetatable(acnt,SWUpdater)  -- make SWUpdater handle lookup
+   --acnt.balance = balance      -- initialize our object
+   return updater
+end
 
 function SWUpdater:update()
     if currentVersion == latestVersion then
