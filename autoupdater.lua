@@ -8,8 +8,6 @@ function SWUpdater:update()
     if self.currentVersion == latestVersion then
         toast ("You are up to date!")
     else
-        httpDownload("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua", localPath .."version.lua")
-        httpDownload("https://raw.githubusercontent.com/digaomatias/SWFriend/master/swfriend.lua", localPath .."swfriend.lua")
-        scriptExit("SWFriend finished updating!")
+        toast ("Updated!")
     end
 end
