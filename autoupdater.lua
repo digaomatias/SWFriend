@@ -1,5 +1,3 @@
-require 'class'
-
 currentVersion = dofile(localPath.."version.lua")
 getNewestVersion = loadstring(httpGet("https://raw.githubusercontent.com/digaomatias/SWFriend/master/version.lua"))
 latestVersion = getNewestVersion()
